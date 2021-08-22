@@ -1,6 +1,8 @@
 {{#each this}}
 <div class="items-list">
-    <img src="{{strDrinkThumb}}" alt="{{strDrink}}" class="image">
-    <p class="text">{{strDrink}}</p>
+    <a href="{{html_url}}" target="_blank">
+    <img src="{{avatar_url}}" alt="{{login}}" class="image">
+    <p class="text">{{login}}</p>
+    </a>
 </div>
 {{/each}}
