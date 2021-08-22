@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search users</title>
+    <link href="../node_modules/@pnotify/core/dist/PNotify.css" rel="stylesheet" type="text/css" />
+    <link
+      href="../node_modules/@pnotify/mobile/dist/PNotifyMobile.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -12,6 +18,19 @@
     />
   </head>
   <body>
+    <div class="div-users">
+      <img src="./images/png-1.png" alt="user-1" height="300" />
+      <img src="./images/png-3.png" alt="user-2" height="300" />
+      <img src="./images/png-5.png" alt="user-3" height="300" />
+      <img src="./images/png-4.png" alt="user-4" height="300" />
+    </div>
+    <div class="div-form">
+      <form id="form" class="form-container">
+        <input type="text" placeholder="search for user..." class="input-form" />
+        <button class="btn disabled">Search</button>
+      </form>
+    </div>
+    <div class="js-container"></div>
     <script src="./index.js"></script>
   </body>
 </html>
