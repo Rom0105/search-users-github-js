@@ -10,50 +10,48 @@ const refs = {
   input: document.querySelector('.input-form'),
   btn: document.querySelector('.btn'),
   container: document.querySelector('.js-container'),
+  btnLoad: document.querySelector('.btn-load'),
 };
 
 refs.form.addEventListener('submit', gitHandlerSubmit);
 refs.btn.addEventListener('click', clearBtn);
 refs.input.addEventListener('input', clearBtn);
+refs.btnLoad.addEventListener('click', gitHandlerSubmit);
+
+let currentPage = 1;
 
 function gitHandlerSubmit(e) {
   e.preventDefault();
   const value = refs.input.value;
 
-  clearMarkup();
-  clear();
+  clearBtn();
 
   axios
     .get(
-      `https://api.github.com/search/users?q=${value}&client_id=6a927e9749baf5170662&client_secret=5181dc33b7d4e79a04eb08a72ef4afca511c808a`,
+      `https://api.github.com/search/users?q=${value}&client_id=6a927e9749baf5170662&client_secret=5181dc33b7d4e79a04eb08a72ef4afca511c808a&page=${currentPage}`,
     )
-    .then(users => errorCocktail(users))
+    .then(users => errorUsers(users))
+    .then(() => currentPage++)
     .catch(err => console.log(err));
-}
-
-function clear() {
-  refs.input.value = '';
 }
 
 function markup(users) {
   refs.container.insertAdjacentHTML('beforeend', usersList(users));
 }
 
-function clearMarkup() {
-  refs.container.innerHTML = '';
-}
-
 function clearBtn() {
   if (refs.input.value === '') {
     refs.btn.setAttribute('disabled', 'disabled');
+    refs.btnLoad.setAttribute('disabled', 'disabled');
+    refs.container.innerHTML = '';
   }
   if (refs.input.value !== '') {
     refs.btn.removeAttribute('disabled');
+    refs.btnLoad.removeAttribute('disabled');
   }
-  return;
 }
 
-function errorCocktail(users) {
+function errorUsers(users) {
   if (users.data.items) {
     markup(users.data.items);
   }
