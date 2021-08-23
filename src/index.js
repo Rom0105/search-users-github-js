@@ -31,7 +31,7 @@ function gitHandlerSubmit(e) {
       `https://api.github.com/search/users?q=${value}&client_id=6a927e9749baf5170662&client_secret=5181dc33b7d4e79a04eb08a72ef4afca511c808a&page=${currentPage}`,
     )
     .then(users => errorUsers(users))
-    .then(() => currentPage++)
+    .then(() => (currentPage += 1))
     .catch(err => console.log(err));
 }
 
