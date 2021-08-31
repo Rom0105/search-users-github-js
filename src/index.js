@@ -17,6 +17,7 @@ refs.form.addEventListener('submit', gitHandlerSubmit);
 refs.btn.addEventListener('click', clearBtn);
 refs.input.addEventListener('input', clearBtn);
 refs.btnLoad.addEventListener('click', gitHandlerSubmit);
+refs.btnLoad.style.visibility = 'hidden';
 
 let currentPage = 1;
 
@@ -37,6 +38,9 @@ function gitHandlerSubmit(e) {
 
 function markup(users) {
   refs.container.insertAdjacentHTML('beforeend', usersList(users));
+  if (users.length > 29) {
+    refs.btnLoad.style.visibility = 'visible';
+  }
 }
 
 function clearBtn() {
@@ -44,6 +48,7 @@ function clearBtn() {
     refs.btn.setAttribute('disabled', 'disabled');
     refs.btnLoad.setAttribute('disabled', 'disabled');
     refs.container.innerHTML = '';
+    refs.btnLoad.style.visibility = 'hidden';
   }
   if (refs.input.value !== '') {
     refs.btn.removeAttribute('disabled');
