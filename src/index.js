@@ -3,7 +3,6 @@ import usersList from './templates/search-users.hbs';
 import { error } from '../node_modules/@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/BrightTheme.css';
 import axios from 'axios';
-import { result } from 'lodash';
 
 const refs = {
   form: document.querySelector('#form'),
